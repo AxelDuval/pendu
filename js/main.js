@@ -1,5 +1,6 @@
 // VARIABLES
 const words = ["chien", "poisson", "ascenseur", "voiture", "souris"];
+let userRequest;
 let userChoice;
 let healthPoints = 7;
 let letterPosition;
@@ -31,8 +32,26 @@ function hideChoice() {
    }
  }
 
+
+// MENU
+do {
+   userRequest = prompt("- Si vous voulez jouer au jeu, tapez : j \n - Si vous voulez consulter les règles, tapez : r \n - Si vous voulez quitter, tapez : q").toLowerCase();
+} while (userRequest != "j" && userRequest != "r" && userRequest != "q");
+
+if (userRequest === "j") {
+    playGame();
+}
+else if (userRequest === "r") {
+    alert("Le but du jeu est simple : \n Deviner toute les lettres qui doivent composer un mot, \n avec un nombre limité de tentatives. \n A chaque fois que le joueur devine une lettre, \n celle-ci est affichée. \n\n Pret à jouer ?");
+    playGame();
+}
+else {
+    alert("A bientôt !")
+}
+
 // GAME LOOP
 // Get the player choice    
+function playGame(){
 while(hiddenText.includes(" _ ") || healthPoints === 0){
    do { userChoice = prompt("Essais restants : " + healthPoints  + "\n\n " +  "Mot à deviner  : "  + hiddenText.join(" ") + "\n\n Choisissez une lettre !").toLowerCase();
       } while (userChoice.length !== 1);
@@ -55,4 +74,5 @@ while(hiddenText.includes(" _ ") || healthPoints === 0){
     else if (hiddenText.includes(" _ ") === false) {  
         alert("Gagné ! Vous avez trouvé le mot : " + computerChoice.join(""));
     }
+}
 }
