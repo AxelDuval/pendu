@@ -34,7 +34,7 @@ function hideChoice() {
 // GAME LOOP
 // Get the player choice    
 while(hiddenText.includes(" _ ") || healthPoints === 0){
-   do { userChoice = prompt("Essais restants : " + healthPoints  + "\n\n " +  "Mot à deviner  : "  + hiddenText.join(" ") + "\n\n Choisissez une lettre !");
+   do { userChoice = prompt("Essais restants : " + healthPoints  + "\n\n " +  "Mot à deviner  : "  + hiddenText.join(" ") + "\n\n Choisissez une lettre !").toLowerCase();
       } while (userChoice.length !== 1);
     // Compare to the random word 
     for (let i = 0; i < computerChoice.length; i++) {           
